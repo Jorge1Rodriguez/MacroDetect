@@ -1,0 +1,36 @@
+# Entornos virtuales (venv, .venv, env/)
+venv/
+.venv/
+env/
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de configuración y entornos
+.env
+.venv
+pip-selfcheck.json
+.Python
+
+# Archivos de desarrollo y IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archivos generados por setuptools/distutils
+build/
+dist/
+*.egg-info/
+
+
+# Modelos de PyTorch (.pth) y otros archivos pesados
+*.pth
+*.pt
+*.h5
+*.bin
+*.tar
+
+
+Design/

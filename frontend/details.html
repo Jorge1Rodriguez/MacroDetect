@@ -1,70 +1,140 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Details | Macronutrient Analyzer</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Details | Macronutrient Analyzer</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    @media (max-width: 768px) {
+      .details-container {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .images-grid {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    .details-container {
+      display: flex;
+      gap: 48px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .images-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .summary-results {
+      max-width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">Macronutrient Analyzer</div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-item">
-                    <span class="nav-icon home-icon"></span>
-                    <span>Home</span>
-                </a>
-                <a href="about.html" class="nav-item">
-                    <span class="nav-icon about-icon"></span>
-                    <span>About</span>
-                </a>
-                <a href="contact.html" class="nav-item">
-                    <span class="nav-icon contact-icon"></span>
-                    <span>Contact</span>
-                </a>
-            </nav>
-        </div>
-    </header>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">Macronutrient Analyzer</div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-item"><span class="nav-icon home-icon"></span><span>Home</span></a>
+        <a href="about.html" class="nav-item"><span class="nav-icon about-icon"></span><span>About</span></a>
+        <a href="contact.html" class="nav-item"><span class="nav-icon contact-icon"></span><span>Contact</span></a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="main-content">
-        <div class="container">
-            <div class="breadcrumbs">
-                <a href="index.html">Home</a>
-                <span class="breadcrumbs-separator">></span>
-                <span>...</span>
-                <span class="breadcrumbs-separator">></span>
-                <span>Image Details</span>
+  <main class="main-content">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs-separator">></span>
+        <a href="analyze.html">Analyze</a>
+        <span class="breadcrumbs-separator">></span>
+        <span>Image Details</span>
+      </div>
+
+      <div class="details-container">
+        <!-- Result Images -->
+        <div class="visual-results">
+          <h2 class="section-subtitle">Visual Results</h2>
+          <div class="images-grid">
+            <div class="image-container" style="width: 100%; max-width: 394px;">
+              <img id="originalImage" src="https://placehold.co/394x295" alt="Original image" />
             </div>
-            
-            <div class="details-container">
-                <div class="visual-results">
-                    <h2 class="section-subtitle">Visual Results</h2>
-                    <div class="images-grid">
-                        <div class="image-container" style="width: 394px; height: 295px;">
-                            <img src="https://placehold.co/394x295" alt="Original image">
-                        </div>
-                        <div class="image-container" style="width: 394px; height: 295px;">
-                            <img src="https://placehold.co/394x295" alt="Analyzed image">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="summary-results">
-                    <h2 class="section-subtitle">Macronutrient Summary</h2>
-                    
-                    <div class="summary-card">
-                        <div class="sidebar-icon-container">
-                            <div class="sidebar-icon"></div>
-                        </div>
-                        <h3 class="sidebar-title">Pixel Percentages</h3>
-                        <p class="sidebar-text">Carbohydrates: 42.3% • Proteins: 28.7% • Fats: 29.0%</p>
-                    </div>
-                    
-                    <button class="btn">Download Results</button>
-                </div>
+            <div class="image-container" style="width: 100%; max-width: 394px;">
+              <img id="maskImage" src="https://placehold.co/394x295" alt="Analyzed mask image" />
             </div>
+          </div>
         </div>
-    </main>
+
+        <!-- Macronutrient Summary -->
+        <div class="summary-results">
+          <h2 class="section-subtitle">Macronutrient Summary</h2>
+
+          <div class="summary-card">
+            <div class="sidebar-icon-container">
+              <div class="sidebar-icon"></div>
+            </div>
+            <h3 class="sidebar-title">Pixel Percentages</h3>
+            <p class="sidebar-text" id="summaryText">
+              Carbohydrates: 42.3% • Proteins: 28.7% • Fats: 29.0%
+            </p>
+          </div>
+
+          <button class="btn" id="downloadBtn">Download Results</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Cargar imágenes desde localStorage si existen
+    const original = localStorage.getItem("originalImage");
+    const mask = localStorage.getItem("maskImage");
+    const summary = localStorage.getItem("summaryText");
+
+    if (original) document.getElementById("originalImage").src = original;
+    if (mask) document.getElementById("maskImage").src = mask;
+    if (summary) document.getElementById("summaryText").textContent = summary;
+
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const link = document.createElement("a");
+      link.href = mask || "#";
+      link.download = "mask_result.png";
+      link.click();
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const summaryText = document.getElementById("summaryText").textContent;
+    const originalImg = document.getElementById("originalImage");
+    const maskImg = document.getElementById("maskImage");
+
+    const originalData = originalImg.src;
+    const maskData = maskImg.src;
+
+    doc.setFontSize(16);
+    doc.text("Macronutrient Analysis Report", 20, 20);
+    doc.setFontSize(12);
+    doc.text(summaryText, 20, 30);
+
+    doc.addImage(originalData, "PNG", 15, 40, 80, 60);
+    doc.text("Original Image", 15, 105);
+
+    doc.addImage(maskData, "PNG", 110, 40, 80, 60);
+    doc.text("Mask Prediction", 110, 105);
+
+    doc.save("macronutrient_report.pdf");
+  });
+</script>
+
 </body>
 </html>

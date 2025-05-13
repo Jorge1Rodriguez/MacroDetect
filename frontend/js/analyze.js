@@ -1,27 +1,28 @@
-const input = document.getElementById("imageInput");
-const preview = document.getElementById("preview");
-const result = document.getElementById("result");
+document.getElementById('upload-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-input.addEventListener("change", async () => {
-  const file = input.files[0];
-  if (!file) return;
+    const fileInput = document.getElementById('file');
+    const file = fileInput.files[0];
+    if (!file) return;
 
-  preview.innerHTML = `<img src="${URL.createObjectURL(file)}" style="max-width:300px"/>`;
+    const formData = new FormData();
+    formData.append('file', file);
 
-  const formData = new FormData();
-  formData.append("file", file);
+    const response = await fetch('/predict/', {
+        method: 'POST',
+        body: formData
+    });
 
-  result.innerHTML = "Analyzing...";
+    const result = await response.json();
 
-  const res = await fetch("http://127.0.0.1:8000/predict/", {
-    method: "POST",
-    body: formData,
-  });
+    // Mostrar la máscara
+    const maskImage = document.getElementById('mask-image');
+    maskImage.src = `data:image/png;base64,${result.mask}`;
 
-  const data = await res.json();
-
-  result.innerHTML = "<h3>Macronutrient Breakdown:</h3>";
-  for (const [macro, value] of Object.entries(data.percentages)) {
-    result.innerHTML += `<p>${macro}: ${value}%</p>`;
-  }
+    // Mostrar los porcentajes
+    const output = document.getElementById('output');
+    output.innerHTML = "<h3>Macronutrient Breakdown</h3>";
+    for (let [macro, value] of Object.entries(result.percentages)) {
+        output.innerHTML += `<p><strong>${macro}:</strong> ${value}%</p>`;
+    }
 });

@@ -1,92 +1,144 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyze Meal | Macronutrient Analyzer</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyze Meal | Macronutrient Analyzer</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    @media (max-width: 768px) {
+      .analysis-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .image-upload-area {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .analysis-bars {
+        flex-direction: column;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">Macronutrient Analyzer</div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-item">
-                    <span class="nav-icon home-icon"></span>
-                    <span>Home</span>
-                </a>
-                <a href="about.html" class="nav-item">
-                    <span class="nav-icon about-icon"></span>
-                    <span>About</span>
-                </a>
-                <a href="contact.html" class="nav-item">
-                    <span class="nav-icon contact-icon"></span>
-                    <span>Contact</span>
-                </a>
-            </nav>
-        </div>
-    </header>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">Macronutrient Analyzer</div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-item"><span class="nav-icon home-icon"></span><span>Home</span></a>
+        <a href="about.html" class="nav-item"><span class="nav-icon about-icon"></span><span>About</span></a>
+        <a href="contact.html" class="nav-item"><span class="nav-icon contact-icon"></span><span>Contact</span></a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="main-content">
-        <div class="container">
-            <h1 class="section-title">Upload Meal Image</h1>
-            <p class="section-description">Drag and drop a food photo (JPG or PNG), or click Browse to select a file.</p>
-            
-            <div class="analysis-container">
-                <div class="image-upload-area">
-                    <div class="image-container" style="width: 312px; height: 234px;">
-                        <img src="https://placehold.co/312x234" alt="Uploaded food image">
-                    </div>
-                    
-                    <div class="analysis-status">
-                        <div class="sidebar-icon-container">
-                            <div class="sidebar-icon"></div>
-                        </div>
-                        <h2 class="sidebar-title">Analyzing <br>Image</h2>
-                        <p class="sidebar-text">Detecting <br>macronutrients. <br>Please wait...</p>
-                    </div>
-                    
-                    <div class="image-container" style="width: 312px; height: 234px;">
-                        <img src="https://placehold.co/312x234" alt="Analyzed food image">
-                    </div>
-                </div>
-                
-                <h2 class="section-subtitle">Macronutrient Breakdown</h2>
-                
-                <div class="analysis-bars">
-                    <div class="analysis-bar">
-                        <div class="bar-container">
-                            <div class="bar" style="height: 60%;"></div>
-                        </div>
-                        <span class="bar-label">Protein</span>
-                    </div>
-                    <div class="analysis-bar">
-                        <div class="bar-container">
-                            <div class="bar" style="height: 80%;"></div>
-                        </div>
-                        <span class="bar-label">Carbs</span>
-                    </div>
-                    <div class="analysis-bar">
-                        <div class="bar-container">
-                            <div class="bar" style="height: 40%;"></div>
-                        </div>
-                        <span class="bar-label">Fats</span>
-                    </div>
-                    <div class="analysis-bar">
-                        <div class="bar-container">
-                            <div class="bar" style="height: 30%;"></div>
-                        </div>
-                        <span class="bar-label">Veggies</span>
-                    </div>
-                    <div class="analysis-bar">
-                        <div class="bar-container">
-                            <div class="bar" style="height: 10%;"></div>
-                        </div>
-                        <span class="bar-label">Other</span>
-                    </div>
-                </div>
-            </div>
+  <main class="main-content">
+    <div class="container">
+      <h1 class="section-title">Upload Meal Image</h1>
+      <p class="section-description">Upload a food photo (JPG or PNG) to analyze its macronutrient composition.</p>
+
+      <input type="file" id="fileInput" accept="image/*" class="form-input" />
+
+      <div class="analysis-container" style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 32px;">
+        <div class="image-upload-area" style="display: flex; gap: 24px;">
+          <div class="image-container" style="width: 312px; height: 234px;" id="originalContainer">
+            <img src="https://placehold.co/312x234" alt="Uploaded food image" id="originalImage" />
+          </div>
+
+          <div class="analysis-status" id="statusBox">
+            <div class="sidebar-icon-container"><div class="sidebar-icon"></div></div>
+            <h2 class="sidebar-title">Analyzing <br>Image</h2>
+            <p class="sidebar-text">Detecting macronutrients. Please wait...</p>
+          </div>
+
+          <div class="image-container" style="width: 312px; height: 234px;" id="maskContainer" class="hidden">
+            <img src="https://placehold.co/312x234" alt="Analyzed food image" id="maskImage" />
+          </div>
         </div>
-    </main>
+      </div>
+
+      <h2 class="section-subtitle" style="margin-top: 48px;">Macronutrient Breakdown</h2>
+      <div class="analysis-bars" id="bars">
+        <div class="analysis-bar"><div class="bar-container"><div class="bar" id="bar-proteins" style="height: 0%;"></div></div><span class="bar-label">Proteins</span></div>
+        <div class="analysis-bar"><div class="bar-container"><div class="bar" id="bar-carbohydrates" style="height: 0%;"></div></div><span class="bar-label">Carbs</span></div>
+        <div class="analysis-bar"><div class="bar-container"><div class="bar" id="bar-fats" style="height: 0%;"></div></div><span class="bar-label">Fats</span></div>
+        <div class="analysis-bar"><div class="bar-container"><div class="bar" id="bar-vegetables" style="height: 0%;"></div></div><span class="bar-label">Vegetables</span></div>
+        <div class="analysis-bar"><div class="bar-container"><div class="bar" id="bar-other" style="height: 0%;"></div></div><span class="bar-label">Other</span></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const originalImage = document.getElementById("originalImage");
+    const maskImage = document.getElementById("maskImage");
+    const statusBox = document.getElementById("statusBox");
+    const maskContainer = document.getElementById("maskContainer");
+
+    const barMap = {
+      proteins: document.getElementById("bar-proteins"),
+      carbohydrates: document.getElementById("bar-carbohydrates"),
+      fats: document.getElementById("bar-fats"),
+      vegetables: document.getElementById("bar-vegetables"),
+      other: document.getElementById("bar-other"),
+    };
+
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      // Mostrar imagen original
+      originalImage.src = URL.createObjectURL(file);
+
+      // Mostrar estado de análisis
+      statusBox.style.display = "block";
+      maskContainer.style.display = "none";
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const res = await fetch("http://127.0.0.1:8000/predict/", {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await res.json();
+
+        // Mostrar máscara
+        maskImage.src = "data:image/png;base64," + data.image;
+        maskContainer.style.display = "block";
+        statusBox.style.display = "none";
+
+        // Actualizar barras
+        Object.keys(barMap).forEach(macro => {
+          const pct = data.percentages[macro] || 0;
+          barMap[macro].style.height = `${pct}%`;
+        });
+      } catch (err) {
+        console.error("Error analyzing image", err);
+        statusBox.innerHTML = "<p>Error analyzing image.</p>";
+      }
+    });
+
+    // Guardar imágenes y porcentajes en localStorage
+localStorage.setItem("originalImage", originalImage.src);
+localStorage.setItem("maskImage", maskImage.src);
+localStorage.setItem("summaryText", Object.entries(data.percentages)
+  .map(([key, val]) => `${key.charAt(0).toUpperCase() + key.slice(1)}: ${val}%`)
+  .join(" • "));
+
+// Redirigir al hacer clic en las barras
+document.getElementById("bars").addEventListener("click", () => {
+  window.location.href = "details.html";
+});
+
+  </script>
+
+  <script src="js/analyze.js"></script>
 </body>
 </html>

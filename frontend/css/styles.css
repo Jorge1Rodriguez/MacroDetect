@@ -370,3 +370,71 @@ body {
     font-weight: 400;
     color: #949494;
 }
+
+/* === Responsive Design === */
+
+@media screen and (max-width: 1200px) {
+    .header-container,
+    .container {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .nav-menu {
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-sidebar {
+        margin-top: 24px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 0 12px;
+    }
+
+    .image-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav-menu {
+        gap: 24px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .sidebar-title {
+        font-size: 18px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}

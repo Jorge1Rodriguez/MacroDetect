@@ -1,86 +1,122 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Macronutrient Analyzer</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Macronutrient Analyzer</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .developer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .developer-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    .developer-avatar img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+
+    .developer-icon .sidebar-icon-container {
+      width: 44px;
+      height: 44px;
+    }
+
+    .qr-code img {
+      margin-top: 16px;
+      width: 200px;
+      height: 200px;
+    }
+
+    @media (max-width: 768px) {
+      .developer-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .qr-code img {
+        width: 100%;
+        height: auto;
+      }
+
+      .developer-info {
+        align-items: center;
+        text-align: center;
+      }
+
+      .developer-card .developer-details {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">Macronutrient Analyzer</div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-item">
-                    <span class="nav-icon home-icon"></span>
-                    <span>Home</span>
-                </a>
-                <a href="about.html" class="nav-item">
-                    <span class="nav-icon about-icon"></span>
-                    <span>About</span>
-                </a>
-                <a href="contact.html" class="nav-item active">
-                    <span class="nav-icon contact-icon"></span>
-                    <span>Contact</span>
-                </a>
-            </nav>
-        </div>
-    </header>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">Macronutrient Analyzer</div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon home-icon"></span><span>Home</span>
+        </a>
+        <a href="about.html" class="nav-item">
+          <span class="nav-icon about-icon"></span><span>About</span>
+        </a>
+        <a href="contact.html" class="nav-item active">
+          <span class="nav-icon contact-icon"></span><span>Contact</span>
+        </a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="main-content">
-        <div class="container">
-            <h1 class="section-title">Contact Form</h1>
-            
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" id="name" class="form-input" placeholder="Enter your name">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" class="form-input" placeholder="Enter your email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" class="form-input form-textarea" placeholder="Type your message"></textarea>
-                </div>
-                
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-            
-            <div class="developer-info">
-                <h2 class="section-subtitle">Developer Info</h2>
-                
-                <div class="developer-card">
-                    <div class="developer-avatar">
-                        <img src="https://placehold.co/44x44" alt="Alex Johnson">
-                    </div>
-                    <div class="developer-details">
-                        <h3 class="developer-name">Alex Johnson</h3>
-                        <p class="developer-role">Lead Developer</p>
-                    </div>
-                </div>
-                
-                <div class="developer-card">
-                    <div class="developer-icon">
-                        <div class="sidebar-icon-container">
-                            <div class="sidebar-icon"></div>
-                        </div>
-                    </div>
-                    <div class="developer-details">
-                        <h3 class="developer-name">GitHub Repository</h3>
-                        <a href="https://github.com/alexjohnson/macronutrient-analyzer" class="github-link">github.com/alexjohnson/macronutrient-analyzer</a>
-                    </div>
-                </div>
-                
-                <p class="scan-text">Scan to view on GitHub</p>
-                <div class="qr-code">
-                    <img src="https://placehold.co/200x200" alt="QR Code">
-                </div>
-            </div>
+  <main class="main-content">
+    <div class="container">
+      <h1 class="section-title">Contact Information</h1>
+
+      <div class="developer-info">
+        <h2 class="section-subtitle">Developer Info</h2>
+
+        <div class="developer-card">
+          <div class="developer-avatar">
+            <img src="https://placehold.co/44x44" alt="Alex Johnson" />
+          </div>
+          <div class="developer-details">
+            <h3 class="developer-name">Alex Johnson</h3>
+            <p class="developer-role">Lead Developer</p>
+          </div>
         </div>
-    </main>
+
+        <div class="developer-card">
+          <div class="developer-icon">
+            <div class="sidebar-icon-container">
+              <div class="sidebar-icon"></div>
+            </div>
+          </div>
+          <div class="developer-details">
+            <h3 class="developer-name">GitHub Repository</h3>
+            <a href="https://github.com/alexjohnson/macronutrient-analyzer" class="github-link">
+              github.com/alexjohnson/macronutrient-analyzer
+            </a>
+          </div>
+        </div>
+
+        <p class="scan-text">Scan to view on GitHub</p>
+        <div class="qr-code">
+          <img src="https://placehold.co/200x200" alt="QR Code" />
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
