@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze Meal | Macronutrient Analyzer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">Macronutrient Analyzer</div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon home-icon"></span>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-item">
+                    <span class="nav-icon about-icon"></span>
+                    <span>About</span>
+                </a>
+                <a href="contact.html" class="nav-item">
+                    <span class="nav-icon contact-icon"></span>
+                    <span>Contact</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="section-title">Upload Meal Image</h1>
+            <p class="section-description">Drag and drop a food photo (JPG or PNG), or click Browse to select a file.</p>
+            
+            <div class="analysis-container">
+                <div class="image-upload-area">
+                    <div class="image-container" style="width: 312px; height: 234px;">
+                        <img src="https://placehold.co/312x234" alt="Uploaded food image">
+                    </div>
+                    
+                    <div class="analysis-status">
+                        <div class="sidebar-icon-container">
+                            <div class="sidebar-icon"></div>
+                        </div>
+                        <h2 class="sidebar-title">Analyzing <br>Image</h2>
+                        <p class="sidebar-text">Detecting <br>macronutrients. <br>Please wait...</p>
+                    </div>
+                    
+                    <div class="image-container" style="width: 312px; height: 234px;">
+                        <img src="https://placehold.co/312x234" alt="Analyzed food image">
+                    </div>
+                </div>
+                
+                <h2 class="section-subtitle">Macronutrient Breakdown</h2>
+                
+                <div class="analysis-bars">
+                    <div class="analysis-bar">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 60%;"></div>
+                        </div>
+                        <span class="bar-label">Protein</span>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 80%;"></div>
+                        </div>
+                        <span class="bar-label">Carbs</span>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 40%;"></div>
+                        </div>
+                        <span class="bar-label">Fats</span>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 30%;"></div>
+                        </div>
+                        <span class="bar-label">Veggies</span>
+                    </div>
+                    <div class="analysis-bar">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 10%;"></div>
+                        </div>
+                        <span class="bar-label">Other</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,372 @@
+/* Reset y estilos base */
+:root {
+    --primary: #634AFF;
+    --primary-light: rgba(99, 74, 255, 0.05);
+    --text-dark: #0A0A0A;
+    --text-medium: #222222;
+    --text-light: #555555;
+    --text-gray: #6B7280;
+    --border: #F0F0F0;
+    --background-light: #F8F8F7;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--white);
+    color: var(--text-dark);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Header/Navbar */
+.header {
+    width: 100%;
+    height: 60px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text-dark);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 80px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.nav-item.active {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.nav-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.nav-icon::before {
+    content: '';
+    position: absolute;
+    background: var(--text-dark);
+}
+
+.home-icon::before {
+    width: 16.67px;
+    height: 14.17px;
+    left: 1.67px;
+    top: 2.50px;
+}
+
+.about-icon::before {
+    width: 16.67px;
+    height: 16.67px;
+    left: 1.67px;
+    top: 1.67px;
+}
+
+.contact-icon::before {
+    width: 16.67px;
+    height: 13.33px;
+    left: 1.67px;
+    top: 3.33px;
+}
+
+/* Contenido principal */
+.main-content {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Estilos comunes */
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.section-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #5038D8;
+}
+
+/* Home Page */
+.hero {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    color: var(--text-medium);
+    margin-bottom: 16px;
+}
+
+.hero-description {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Sidebar */
+.cta-sidebar {
+    background: var(--primary-light);
+    border-radius: 16px;
+    padding: 24px;
+    width: 148px;
+}
+
+.sidebar-icon-container {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.sidebar-icon {
+    width: 17.5px;
+    height: 17.5px;
+    background: var(--primary);
+}
+
+.sidebar-label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.sidebar-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: var(--text-gray);
+    margin-bottom: 24px;
+}
+
+/* Image container */
+.image-container {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+}
+
+.breadcrumbs a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.breadcrumbs-separator {
+    color: #949494;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--background-light);
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.form-input::placeholder {
+    color: #949494;
+}
+
+.form-textarea {
+    min-height: 148px;
+    resize: vertical;
+}
+
+/* Developer info */
+.developer-info {
+    margin-top: 40px;
+}
+
+.developer-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--text-dark);
+}
+
+.developer-role {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #949494;
+}
+
+.github-link {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #949494;
+    text-decoration: none;
+}
+
+/* Analysis bars */
+.analysis-bars {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.analysis-bar {
+    flex: 1;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar-container {
+    width: 100%;
+    height: 100%;
+    background: #F0F0F0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar {
+    width: 100%;
+    background: var(--primary);
+    position: absolute;
+    bottom: 0;
+}
+
+.bar-label {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #949494;
+}

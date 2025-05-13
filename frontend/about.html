@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Model | Macronutrient Analyzer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">Macronutrient Analyzer</div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon home-icon"></span>
+                    <span>Home</span>
+                </a>
+                <a href="about.html" class="nav-item active">
+                    <span class="nav-icon about-icon"></span>
+                    <span>About</span>
+                </a>
+                <a href="contact.html" class="nav-item">
+                    <span class="nav-icon contact-icon"></span>
+                    <span>Contact</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="section-title">How It Works</h1>
+            <p class="section-description">Discover how our AI segments your meal and analyzes macronutrients using advanced computer vision.</p>
+            
+            <div class="model-section">
+                <div class="section-content">
+                    <div class="image-container" style="width: 448px; height: 336px;">
+                        <img src="https://placehold.co/448x336" alt="Segmentation Model">
+                    </div>
+                    <div class="section-text">
+                        <h2 class="section-subtitle">Segmentation Model</h2>
+                        <p>Our model identifies and separates different food items in your meal photo. Each segment is analyzed for its macronutrient content, providing a detailed breakdown.</p>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div class="image-container" style="width: 448px; height: 448px;">
+                        <img src="https://placehold.co/448x448" alt="Training Dataset">
+                    </div>
+                    <div class="section-text">
+                        <h2 class="section-subtitle">Training Dataset</h2>
+                        <p>We use the FoodSeg103 dataset, a large collection of annotated food images, to train our model. This ensures accurate recognition of a wide variety of foods.</p>
+                    </div>
+                </div>
+                
+                <div class="section-content">
+                    <div class="image-container" style="width: 448px; height: 336px;">
+                        <img src="https://placehold.co/448x336" alt="Deep Learning Architecture">
+                    </div>
+                    <div class="section-text">
+                        <h2 class="section-subtitle">Deep Learning Architecture</h2>
+                        <p>Our segmentation model is based on the UNet architecture with a ResNet50 encoder. This combination enables precise food segmentation and robust feature extraction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
