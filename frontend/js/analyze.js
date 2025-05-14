@@ -1,28 +1,40 @@
-document.getElementById('upload-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
+const uploadInput = document.getElementById("uploadInput");
+const originalImage = document.getElementById("originalImage");
+const maskImage = document.getElementById("maskImage");
+const barsContainer = document.getElementById("barsContainer");
 
-    const fileInput = document.getElementById('file');
-    const file = fileInput.files[0];
-    if (!file) return;
+uploadInput.addEventListener("change", async () => {
+  const file = uploadInput.files[0];
+  if (!file) return;
 
-    const formData = new FormData();
-    formData.append('file', file);
+  const formData = new FormData();
+  formData.append("file", file);
 
-    const response = await fetch('/predict/', {
-        method: 'POST',
-        body: formData
+  originalImage.src = URL.createObjectURL(file);
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/predict/", {
+      method: "POST",
+      body: formData
     });
 
     const result = await response.json();
+    maskImage.src = `data:image/png;base64,${result.mask_image}`;
 
-    // Mostrar la máscara
-    const maskImage = document.getElementById('mask-image');
-    maskImage.src = `data:image/png;base64,${result.mask}`;
-
-    // Mostrar los porcentajes
-    const output = document.getElementById('output');
-    output.innerHTML = "<h3>Macronutrient Breakdown</h3>";
-    for (let [macro, value] of Object.entries(result.percentages)) {
-        output.innerHTML += `<p><strong>${macro}:</strong> ${value}%</p>`;
+    barsContainer.innerHTML = "";
+    for (const [macro, percent] of Object.entries(result.percentages)) {
+      const bar = document.createElement("div");
+      bar.className = "analysis-bar";
+      bar.innerHTML = `
+        <div class="bar-container">
+          <div class="bar" style="height: ${percent}%;"></div>
+        </div>
+        <span class="bar-label">${macro}</span>
+      `;
+      barsContainer.appendChild(bar);
     }
+  } catch (err) {
+    alert("Prediction failed.");
+    console.error(err);
+  }
 });

@@ -1,9 +1,9 @@
 fastapi
 uvicorn
-python-multipart
-pillow
 torch
 torchvision
+Pillow
+numpy
 albumentations
 matplotlib
-numpy
+python-multipart
