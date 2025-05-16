@@ -7,7 +7,7 @@ import os
 
 app = FastAPI()
 
-# Permitir CORS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,7 +21,7 @@ model.load_state_dict(torch.load("backend/model/unet_resnet50.pth", map_location
 model.eval()
 
 
-# Endpoint de predicción
+
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
     image_bytes = await file.read()

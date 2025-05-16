@@ -1,67 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Image Details | Macronutrient Analyzer</title>
-  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/details.js"></script>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="header-container">
-      <div class="logo">Macronutrient Analyzer</div>
+      <a href="index.html" class="logo">n-Utri-Net</a>
       <nav class="nav-menu">
         <a href="index.html" class="nav-item">Home</a>
         <a href="about.html" class="nav-item">About</a>
+        <a href="analyze.html" class="nav-item active">Analyze</a>
         <a href="contact.html" class="nav-item">Contact</a>
       </nav>
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="main-content">
     <div class="container">
+      <!-- Breadcrumbs -->
       <div class="breadcrumbs">
         <a href="index.html">Home</a>
         <span class="breadcrumbs-separator">></span>
         <span>Image Details</span>
       </div>
 
-      <div class="details-container">
-        <div class="visual-results">
-          <h2 class="section-subtitle">Visual Results</h2>
-          <div class="images-grid">
-            <div class="image-container" style="width: 394px; height: 295px;">
-              <img id="originalDetailImage" src="" alt="Original" />
-            </div>
-            <div class="image-container" style="width: 394px; height: 295px;">
-              <img id="maskDetailImage" src="" alt="Prediction" />
-            </div>
-          </div>
+      <!-- Section Title -->
+      <h2 class="section-subtitle" style="margin-top: 1.5rem;">Visual Results</h2>
+
+      <!-- Image Grid -->
+      <div class="images-grid" style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <div class="image-container" style="width: 394px; height: 295.5px; border-radius: 6px; overflow: hidden;">
+          <img id="originalDetailImage" src="" alt="Original" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
-
-        <div class="summary-results">
-          <h2 class="section-subtitle">Macronutrient Summary</h2>
-          <div class="summary-card">
-            <div class="sidebar-icon-container">
-              <div class="sidebar-icon"></div>
-            </div>
-            <h3 class="sidebar-title">Pixel Percentages</h3>
-            <p class="sidebar-text" id="percentagesText">
-              <!-- Se llena con JS -->
-            </p>
-            <div class="legend">
-              <span style="color: #1f77b4;">■ Proteins</span>
-              <span style="color: #ff7f0e;">■ Carbs</span>
-              <span style="color: #2ca02c;">■ Fats</span>
-              <span style="color: #d62728;">■ Vegetables</span>
-              <span style="color: #e377c2;">■ Other</span>
-            </div>
-          </div>
-
-          <button class="btn" id="downloadBtn">Download Results</button>
+        <div class="image-container" style="width: 394px; height: 295.5px; border-radius: 6px; overflow: hidden;">
+          <img id="maskDetailImage" src="" alt="Prediction" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
       </div>
+
+      <!-- Summary -->
+      <h2 class="section-subtitle" style="margin-top: 2rem;">Macronutrient Summary</h2>
+
+      <div class="summary-card" style="background: rgba(99, 74, 255, 0.05); border-radius: 16px; padding: 24px; max-width: 800px;">
+        <div class="summary-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
+          <div class="icon-circle" style="width: 36px; height: 36px; background: rgba(99, 74, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+            <div style="width: 16px; height: 16px; background: #634AFF; border-radius: 50%;"></div>
+          </div>
+          <h3 style="font-size: 20px; font-weight: 600; margin: 0;">Pixel Percentages</h3>
+        </div>
+        <p class="sidebar-text" id="percentagesText" style="color: #6B7280; font-size: 14px; line-height: 1.6;">
+          <!-- Se llena dinámicamente con JS -->
+        </p>
+        <div class="legend" style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap; font-size: 14px;">
+          <span style="color: #1f77b4;">■ Proteins</span>
+          <span style="color: #ff7f0e;">■ Carbs</span>
+          <span style="color: #2ca02c;">■ Fats</span>
+          <span style="color: #d62728;">■ Vegetables</span>
+          <span style="color: #e377c2;">■ Other</span>
+        </div>
+      </div>
+
+      <!-- Download Button -->
+      <button class="btn" id="downloadBtn" style="margin-top: 1.5rem; background: #634AFF; color: white; border-radius: 12px; padding: 10px 20px; font-weight: 600;">
+        Download Results
+      </button>
     </div>
   </main>
 </body>

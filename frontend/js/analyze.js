@@ -3,6 +3,7 @@ const resultsSection = document.getElementById("resultsSection");
 const originalImage = document.getElementById("originalImage");
 const maskImage = document.getElementById("maskImage");
 const barsContainer = document.getElementById("barsContainer");
+const analyzeBtn = document.getElementById("analyzeBtn");
 
 const macroColors = {
   proteins: "#1f77b4",
@@ -12,21 +13,32 @@ const macroColors = {
   other: "#e377c2",
 };
 
-imageInput.addEventListener("change", async () => {
-  const file = imageInput.files[0];
-  if (!file) return;
+let selectedFile = null;
 
-  // Mostrar imagen original
+imageInput.addEventListener("change", () => {
+  selectedFile = imageInput.files[0];
+  if (!selectedFile) return;
+
   const reader = new FileReader();
   reader.onload = () => {
     originalImage.src = reader.result;
     resultsSection.style.display = "block";
+    maskImage.src = "";
+    barsContainer.innerHTML = "";
+    analyzeBtn.disabled = false;
   };
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(selectedFile);
+});
 
-  // Enviar imagen al backend
+
+analyzeBtn.addEventListener("click", async () => {
+  if (!selectedFile) return;
+
+  analyzeBtn.disabled = true;
+  analyzeBtn.textContent = "Analyzing...";
+
   const formData = new FormData();
-  formData.append("file", file);
+  formData.append("file", selectedFile);
 
   try {
     const response = await fetch("http://127.0.0.1:8000/predict/", {
@@ -41,12 +53,12 @@ imageInput.addEventListener("change", async () => {
     const data = await response.json();
     maskImage.src = `data:image/png;base64,${data.mask}`;
 
-    // Guardar para la vista de detalles
+
     sessionStorage.setItem("originalImage", originalImage.src);
     sessionStorage.setItem("maskImage", maskImage.src);
     sessionStorage.setItem("percentages", JSON.stringify(data.percentages));
 
-    // Renderizar barras
+
     barsContainer.innerHTML = "";
     Object.entries(data.percentages).forEach(([macro, percentage]) => {
       const bar = document.createElement("div");
@@ -65,5 +77,8 @@ imageInput.addEventListener("change", async () => {
   } catch (error) {
     console.error(error);
     alert("Hubo un error al analizar la imagen.");
+  } finally {
+    analyzeBtn.disabled = false;
+    analyzeBtn.textContent = "Analyze Meal";
   }
 });

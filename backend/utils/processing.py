@@ -10,6 +10,7 @@ import base64
 import matplotlib.pyplot as plt
 
 macro_names = {
+    
     0: "background",
     1: "proteins",
     2: "carbohydrates",
@@ -59,7 +60,7 @@ def process_image(image_bytes, model, device):
         output = model(input_tensor)
         prediction = torch.argmax(output.squeeze(), dim=0).cpu().numpy()
 
-    # Calculamos porcentajes
+
     total_pixels = (prediction != 0).sum()
     percentages = {}
     for class_id in range(1, 6):
@@ -67,7 +68,6 @@ def process_image(image_bytes, model, device):
         if pixels > 0:
             percentages[macro_names[class_id]] = round((pixels / total_pixels) * 100, 2)
 
-    # Creamos la máscara en color
     rgb_mask = np.zeros((256, 256, 3), dtype=np.uint8)
     for class_id, hex_color in macro_colors.items():
         if class_id == 0:
@@ -75,7 +75,6 @@ def process_image(image_bytes, model, device):
         color = tuple(int(hex_color.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))
         rgb_mask[prediction == class_id] = color
 
-    # Guardar en base64
     result = Image.fromarray(rgb_mask)
     buf = io.BytesIO()
     result.save(buf, format="PNG")

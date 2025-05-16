@@ -1,65 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macronutrient Analyzer</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">Macronutrient Analyzer</div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-item active">
-                    <span class="nav-icon home-icon"></span>
-                    <span>Home</span>
-                </a>
-                <a href="about.html" class="nav-item">
-                    <span class="nav-icon about-icon"></span>
-                    <span>About</span>
-                </a>
-                <a href="contact.html" class="nav-item">
-                    <span class="nav-icon contact-icon"></span>
-                    <span>Contact</span>
-                </a>
-            </nav>
-        </div>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>n-Utri-Net</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">n-Utri-Net</a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-item active">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+      </nav>
+    </div>
+  </header>
+
 
     <main class="main-content">
-        <div class="container">
-            <div class="hero">
-                <h1 class="hero-title">Macronutrient Analyzer</h1>
-                <p class="hero-description">Upload a food image and get macronutrient segmentation and analysis.</p>
+      <section class="hero">
+        <h1 class="hero-title">Macronutrient Analyzer</h1>
+        <p class="hero-description">
+          Upload a food image and get macronutrient segmentation and analysis.
+        </p>
 
-                <div class="content-wrapper">
-                    <div class="image-container">
-                        <img src="https://placehold.co/960x540" alt="Food analysis example">
-                    </div>
+        <div class="container content-wrapper" style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; align-items: flex-start;">
 
-                    <aside class="cta-sidebar">
-                        <div class="sidebar-header">
-                            <div class="sidebar-icon-container">
-                                <div class="sidebar-icon"></div>
-                            </div>
-                            <span class="sidebar-label">Start Here</span>
-                        </div>
+          <div class="image-container" style="max-width: 960px; flex: 1 1 60%;">
+            <img src="assets/HomeImage.jpg" alt="Logo image" class="logo-image" />
+          </div>
 
-                        <h2 class="sidebar-title">Get <br>Started</h2>
 
-                        <p class="sidebar-text">
-                            Upload a food <br>photo to <br>analyze its <br>macronutrients <br>instantly.
-                        </p>
-
-                        <button class="btn" onclick="location.href='analyze.html'">
-                            <span>Get</span>
-                            <span>Started</span>
-                        </button>
-                    </aside>
-                </div>
+          <div class="cta-sidebar">
+            <div class="sidebar-icon-container">
+              <div class="sidebar-icon"></div>
             </div>
+            <div class="sidebar-label">Start Here</div>
+            <div class="sidebar-title">Get Started</div>
+            <div class="sidebar-text">
+              Upload a food<br />
+              photo to analyze<br />
+              its macronutrients<br />
+              instantly.
+            </div>
+            <a href="analyze.html" class="btn">Get Started</a>
+          </div>
         </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>
