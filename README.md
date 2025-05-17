@@ -1,6 +1,3 @@
-# MacroDetect
-AI-powered food analysis tool that identifies proteins, carbs, and fats in meal photos using deep learning.
-
 # Macronutrient Analyzer
 
 A web application that uses computer vision to segment food items in a photo and analyze their macronutrient distribution (proteins, carbohydrates, fats, vegetables, and others).
