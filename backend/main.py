@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from backend.utils.processing import UNetResNet50, process_image
+from utils.processing import UNetResNet50, process_image
 import torch
 import os
 
