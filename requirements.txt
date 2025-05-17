@@ -7,3 +7,5 @@ numpy
 albumentations
 matplotlib
 python-multipart
+requests
+tqdm
