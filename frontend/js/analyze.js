@@ -41,7 +41,7 @@ analyzeBtn.addEventListener("click", async () => {
   formData.append("file", selectedFile);
 
   try {
-    const response = await fetch("https://warrior-assembly-rand-ton.trycloudflare.com/predict/", {
+    const response = await fetch("https://resume-assessments-innovations-suspected.trycloudflare.com/predict/", {
       method: "POST",
       body: formData,
     });
