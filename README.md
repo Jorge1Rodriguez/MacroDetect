@@ -13,7 +13,8 @@ Macronutirent_Analyzer/
 │   ├── main.py
 │   └── utils/
 │       ├── __init__.py
-│       └── processing.py
+│       ├── processing.py
+│       └── download_model.py  # Script to download the model automatically
 |   └── model/
 |       └── unet_resnet50.pth   # <-- Place the downloaded model here
 │
@@ -34,13 +35,17 @@ Macronutirent_Analyzer/
 |       ├── aboutImage3.jpg
 |       ├── HomeImage.jpg
 |       ├── logo.png
-|       └── qrgithub.png
+|       ├── qrgithub.png
+|       ├── Jorge.jpeg
+|       ├── Kevin.jpeg
+|       └── David.jpeg
 │
 |
 │
 ├── requirements.txt
 └── venv/                     # Python virtual environment (local)
 ```
+
 
 ---
 
@@ -58,6 +63,7 @@ Macronutirent_Analyzer/
 git clone https://github.com/Jorge1Rodriguez/MacroDetect.git
 cd macronutrient-analyzer
 ```
+
 
 ---
 
@@ -79,6 +85,7 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
+
 ---
 
 ## 3. Install dependencies
@@ -87,15 +94,29 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+
 ---
 
 ## 4. Download the model
 
-Download the model file from the following link and place it inside the `/model` directory:
+You have two options to download the model:
+
+### Option 1: Automatic download using the provided script
+
+```bash
+python backend/utils/download_model.py
+```
+
+This script will automatically download the model and place it in the correct directory.
+
+### Option 2: Manual download
+
+Download the model file from the following link and place it inside the `/backend/model` directory:
 
 ```
 https://www.mediafire.com/file/nds8ricg0q9axpt/unet_resnet50.pth/file
 ```
+
 
 ---
 
@@ -122,6 +143,7 @@ Once running, the backend will be available at:
 ```
 http://127.0.0.1:8000
 ```
+
 
 ---
 
@@ -153,5 +175,3 @@ http://localhost:8080
 5. You can download the labeled segmentation mask from the "Details" page.
 
 ---
-
-
